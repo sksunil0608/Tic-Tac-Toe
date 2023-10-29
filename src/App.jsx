@@ -5,6 +5,7 @@ import './styles.scss';
 import { calculateWinner } from './winner';
 import StatusMessage from './components/StatusMessage';
 import History from './components/History';
+import Navigaton from './components/Navigation';
 
 const NEW_GAME = [{ squares: Array(9).fill(null), isXNext: false }];
 
@@ -66,6 +67,7 @@ function App() {
   };
   return (
     <div className="app">
+      <Navigaton />
       <h1>
         <span className="text-orange">TIC </span>
         <span className="text-green">TAC </span>
