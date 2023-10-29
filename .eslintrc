@@ -3,7 +3,8 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
-    "prettier"
+    "prettier",
+    "eslint-disable-next-line react/prop-types"
   ],
   "env": {
     "browser": true
