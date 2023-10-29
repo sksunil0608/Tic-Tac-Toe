@@ -20,6 +20,10 @@ function App() {
 
   const winner = calculateWinner(gamingBoard.squares);
 
+  const noMovesLeft = gamingBoard.squares.every(
+    squareValue => squareValue !== null
+  );
+
   const handleSquareClick = clickedPosition => {
     if (gamingBoard.squares[clickedPosition] || winner) {
       return;
@@ -56,28 +60,32 @@ function App() {
     setCurrentMove(move);
   };
 
-  const resetBtn = resetGame => {
-    if (resetGame) {
-      moveTo(0);
-    }
+  const onNewGameStart = () => {
+    setHistory(NEW_GAME);
+    setCurrentMove(0);
   };
   return (
     <div className="app">
-      <StatusMessage winner={winner} gamingBoard={gamingBoard} />
+      <StatusMessage
+        winner={winner}
+        gamingBoard={gamingBoard}
+        noMovesLeft={noMovesLeft}
+      />
       <Board
         squares={gamingBoard.squares}
         handleSquareClick={handleSquareClick}
       />
-      <h2>Current Gaming History</h2>
-      <History history={history} moveTo={moveTo} currentMove={currentMove} />
+
       <button
         type="button"
-        className="btn-reset"
-        onClick={() => resetBtn(true)}
+        className={`btn-reset ${winner || noMovesLeft ? 'active' : ''}`}
+        onClick={onNewGameStart}
       >
         {' '}
-        RESET
+        Start New Game
       </button>
+      <h2>Current Gaming History</h2>
+      <History history={history} moveTo={moveTo} currentMove={currentMove} />
     </div>
   );
 }
