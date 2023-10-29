@@ -94,6 +94,7 @@ function App() {
       </button>
       <p style={{ fontWeight: 'bold' }}>Current Gaming History</p>
       <History history={history} moveTo={moveTo} currentMove={currentMove} />
+      <div className="bg-balls"></div>
     </div>
   );
 }
