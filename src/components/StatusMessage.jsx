@@ -1,8 +1,11 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 //React.Fragment is the empty tag we can use <> </>
-const StatusMessage = ({ winner, isXNext, squares }) => {
-  const noMovesLeft = squares.every(squareValue => squareValue !== null);
+const StatusMessage = ({ winner, gamingBoard }) => {
+  const { squares, isXNext } = gamingBoard;
+  const noMovesLeft = gamingBoard.squares.every(
+    squareValue => squareValue !== null
+  );
   const nextPlayer = isXNext ? 'X' : 'O';
 
   const renderStatusMessage = () => {
